@@ -23,7 +23,7 @@ jobs:
       - name: Install the package's dependencies
         # The package lives in omarchy-pkgs, so its PKGBUILD is the one list of what the app needs and CI reads it rather than keeping a copy.
         run: |
-          curl -fsSL "https://raw.githubusercontent.com/omacom/omarchy-pkgs/master/pkgbuilds/${{ github.event.repository.name }}/PKGBUILD" -o "$RUNNER_TEMP/PKGBUILD"
+          curl -fsSL "https://raw.githubusercontent.com/omacom/omarchy-pkgs/omarchy-apps-cmake/pkgbuilds/${{ github.event.repository.name }}/PKGBUILD" -o "$RUNNER_TEMP/PKGBUILD"
           source "$RUNNER_TEMP/PKGBUILD"
           deps=("${depends[@]}" "${makedepends[@]}" "${checkdepends[@]}")
           pacman -S --noconfirm --needed base-devel cmake dbus "${deps[@]%%[<>=]*}"
